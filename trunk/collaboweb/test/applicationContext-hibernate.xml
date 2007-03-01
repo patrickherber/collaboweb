@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+	<!-- ========================= Start of PERSISTENCE DEFINITIONS ========================= -->  
+	
+	<!-- DataSource Definition -->
+	<bean id="dataSource"
+      	class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/collaboweb?zeroDateTimeBehavior=convertToNull&amp;useServerPrepStmts=false</value>
+		</property>
+		<property name="username" value="root"/>
+		<property name="password" value="1234"/>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>ch/arpage/collaboweb/model/hibernate/Actions.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/Attributes.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/ValidationTypes.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/ViewTypes.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/Views.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/ResourceValidationTypes.hbm.xml</value>
+				<value>ch/arpage/collaboweb/model/hibernate/ResourceTypes.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">false</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop> 
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="hibernateTest" class="ch.arpage.collaboweb.dao.hibernate.HibernateTest">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="viewTypeDao" class="ch.arpage.collaboweb.dao.hibernate.ViewTypeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="viewDao" class="ch.arpage.collaboweb.dao.hibernate.ViewDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="resourceValidationTypeDao" class="ch.arpage.collaboweb.dao.hibernate.ResourceValidationTypeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="resourceTypeDao" class="ch.arpage.collaboweb.dao.hibernate.ResourceTypeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="attributeDao" class="ch.arpage.collaboweb.dao.hibernate.AttributeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="validationTypeDao" class="ch.arpage.collaboweb.dao.hibernate.ValidationTypeDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="actionDao" class="ch.arpage.collaboweb.dao.hibernate.ActionDao">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+</beans>

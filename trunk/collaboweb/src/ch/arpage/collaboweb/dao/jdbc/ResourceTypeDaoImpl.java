@@ -771,7 +771,7 @@ public class ResourceTypeDaoImpl extends JdbcDaoSupport implements ResourceTypeD
 				stmt.setInt(8, attribute.getFormOrder());
 				stmt.setBoolean(9, attribute.isLoadInList());
 				stmt.setInt(10, attribute.getSearchFieldType());
-				stmt.setInt(11, attribute.getSearchFieldType());
+				stmt.setBoolean(11, attribute.isNamePart());
 				stmt.setInt(12, attribute.getAttributeId());
 				return stmt;
 			}

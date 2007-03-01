@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 29, 2006 12:28:16 PM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+    <class name="ch.arpage.collaboweb.model.SupportedChilds" table="supported_childs" catalog="collaboweb">
+        <composite-id name="id" class="ch.arpage.collaboweb.model.SupportedChildsId">
+            <key-property name="parentTypeId" type="int">
+                <column name="PARENT_TYPE_ID" />
+            </key-property>
+            <key-property name="childTypeId" type="int">
+                <column name="CHILD_TYPE_ID" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

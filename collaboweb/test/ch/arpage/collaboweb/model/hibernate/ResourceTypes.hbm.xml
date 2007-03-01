@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 29, 2006 12:28:16 PM by Hibernate Tools 3.2.0.beta8 -->
+<hibernate-mapping>
+    <class name="ch.arpage.collaboweb.model.ResourceType" table="resource_types" catalog="collaboweb">
+    	<cache usage="read-write"/>
+        <id name="typeId" type="int">
+            <column name="TYPE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="familyId" type="java.lang.Integer">
+            <column name="FAMILY_ID"/>
+        </property>
+        <property name="communityId" type="java.lang.Long">
+            <column name="COMMUNITY_ID"/>
+        </property>
+        <property name="timeView" type="java.lang.Boolean">
+            <column name="TIME_VIEW"/>
+        </property>
+        <map name="labels" table="resource_type_labels" cascade="all" lazy="false">
+        	<key column="TYPE_ID"/>
+        	<index column="LANGUAGE" type="string"/> 
+        	<element column="LABEL" type="string" />
+        </map>
+        <bag name="attributes" lazy="false" order-by="FORM_ORDER">
+			<key column="TYPE_ID"/>
+			<one-to-many class="ch.arpage.collaboweb.model.Attribute"/>
+		</bag>
+        <bag name="views" lazy="false" order-by="VIEW_TYPE_ID">
+			<key column="TYPE_ID"/>
+			<one-to-many class="ch.arpage.collaboweb.model.View"/>
+		</bag>
+        <bag name="resourceValidations" table="resource_validations" lazy="false" order-by="RESOURCE_VALIDATION_TYPE_ID" >
+			<key column="TYPE_ID"/>
+			<many-to-many column="RESOURCE_VALIDATION_TYPE_ID" class="ch.arpage.collaboweb.model.ResourceValidationType"/>
+		</bag>
+
+    </class>
+    
+</hibernate-mapping>

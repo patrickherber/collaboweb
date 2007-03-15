@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+	
+	<!-- MessageSource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages"/>
+		<property name="useCodeAsDefaultMessage" value="true"/>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="securityService" class="ch.arpage.collaboweb.services.impl.SecurityServiceImpl"/>
+	
+	<bean id="keyGenerator" class="ch.arpage.collaboweb.services.impl.KeyGeneratorImpl"/>
+
+	<bean id="resourceManagerTarget" class="ch.arpage.collaboweb.services.impl.ResourceManagerImpl">
+		<property name="dao" ref="resourceDao"/>
+		<property name="resourceTypeDao" ref="resourceTypeDao"/>
+		<property name="keyGenerator" ref="keyGenerator"/>
+		<property name="indexerManager" ref="indexerManager" />
+		<property name="securityService" ref="securityService"/>
+	</bean>
+	
+	<bean id="resourceManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="target" ref="resourceManagerTarget"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED, ISOLATION_READ_COMMITTED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="resourceTypeManagerTarget" class="ch.arpage.collaboweb.services.impl.ResourceTypeManagerImpl">
+		<property name="dao" ref="resourceTypeDao"/>
+		<property name="messageSource" ref="messageSource" />
+		<property name="securityService" ref="securityService"/>
+	</bean>
+	
+	<bean id="resourceTypeManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="target" ref="resourceTypeManagerTarget"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED, ISOLATION_READ_COMMITTED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="userManagerTarget" class="ch.arpage.collaboweb.services.impl.UserManagerImpl">
+		<property name="userDao" ref="userDao"/>
+	</bean>
+	
+	<bean id="userManager" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="transactionManager"/>
+		<property name="target" ref="userManagerTarget"/>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED, ISOLATION_READ_COMMITTED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="indexerManager" class="ch.arpage.collaboweb.services.impl.IndexerManagerImpl">
+		<property name="resourceDao" ref="resourceDao"/>
+		<property name="repository" value="C:/Program Files/eclipse/workspace/collaboweb/WebContent/WEB-INF/repository"/>
+	</bean>
+	
+	<!-- Mail Sender -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.ticino.com"/>
+		<property name="username" value="patrick.herber@ticino.com"/>
+		<property name="password" value="patrick"/>    	    
+	    <property name="javaMailProperties">
+	        <props>
+		  		<prop key="mail.smtp.auth">true</prop>
+	        </props>
+	    </property>
+	</bean>
+	<bean id="mailService" class="ch.arpage.collaboweb.services.impl.MailServiceImpl">
+		<property name="defaultFrom" value="patrick.herber@ticino.com"/>
+		<property name="defaultTo" value="patrick.herber@ticino.com"/>
+		<property name="mailSender" ref="mailSender"/>
+	</bean>
+	
+	<!-- Actions -->
+
+	<bean id="actionManager" 
+		class="ch.arpage.collaboweb.services.actions.ActionManagerImpl"/>
+	
+	<bean id="fileOpenAction"
+		class="ch.arpage.collaboweb.services.actions.FileOpenAction">
+		<property name="resourceManager" ref="resourceManager"/>
+	</bean>
+	
+	<bean id="urlOpenAction"
+		class="ch.arpage.collaboweb.services.actions.UrlOpenAction">
+		<property name="resourceManager" ref="resourceManager"/>
+	</bean>
+	
+	<bean id="fileZipAction"
+		class="ch.arpage.collaboweb.services.actions.FileZipAction">
+		<property name="resourceManager" ref="resourceManager"/>
+	</bean>
+	
+	<bean id="vCardAction"
+		class="ch.arpage.collaboweb.services.actions.VCardExportAction">
+		<property name="resourceManager" ref="resourceManager"/>
+	</bean>
+	
+	<!-- Resource Validators -->
+
+	<bean id="resourceValidatorManager" 
+		class="ch.arpage.collaboweb.services.validation.ResourceValidatorManager"/>
+	
+	<bean id="fileValidator"
+		class="ch.arpage.collaboweb.services.validation.FileValidator"/>
+		
+	<bean id="urlValidator"
+		class="ch.arpage.collaboweb.services.validation.UrlValidator"/>
+
+</beans>

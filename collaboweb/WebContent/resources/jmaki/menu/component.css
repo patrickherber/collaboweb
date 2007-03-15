@@ -1,0 +1,63 @@
+.jmakiMenuBar {
+    width: 100%;
+    font-size:12px;
+    height: 20px;
+    background:#3399FF;
+    text-align:bottom;
+}
+
+.jmakiMenuEndSpacer{
+    height:15px;
+    width:35px;
+}
+
+.jmakiMenuSeparator{
+  margin-top: 2px;
+  width: 6px;
+  margin-left: 3px;
+  float:right;
+}
+
+.jmakiMenuTop:hover{
+    cursor:pointer;
+}
+
+.jmakiMenuTop{
+  margin-top: 2px;
+  background:#3399FF;
+  text-decoration:underline;
+  float:right;
+  color: #FFFFFF;
+}
+.jmakiMenuTopHover{
+    float:right;
+    color:#3399DD;
+    background:#FFFFFF;
+    text-decoration:underline;
+    cursor:pointer;
+}
+
+.jmakiMenuItem{
+    width:100%;
+    cursor:pointer;
+    background: #3399FF;
+    color: #FFFFFF;
+}
+
+.jmakiMenuItemHover{
+    width:100%;
+    color:#3399DD;
+    background:white;
+    cursor:pointer;
+}
+
+.jmakiMenuContainer {
+
+  position: absolute;
+  z-index:15;
+  width:80px;
+  padding:2px;
+  display:none;
+  border: 1px gray solid;
+  background: #3399FF;
+}

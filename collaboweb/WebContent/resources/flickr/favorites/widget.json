@@ -1,0 +1,14 @@
+{
+    'name': 'Favorites',
+    'type': 'flickr',
+     'version':'.8',
+    'image': 'images/flickr-favorites.jpg',
+    'description': 'This widget looks up a number of images based on your preference.',
+    'args': [
+                {'tags': {'type':'STRING', 'defaultValue': '', 'description':'The tag to display. Leaving blank will search everyone\'s photos'}},
+                {'columns': {'type':'NUMBER', 'defaultValue': 2, 'values': [2,3,4,5],'description':'The number of colums in each row to display.'}},
+                {'count': {'type':'NUMBER', 'defaultValue': 4,'values': [4,8,9,12,15,16,18,20], 'description':'The number of images to display.'}},
+                {'size': {'type':'NUMBER', 'defaultValue': 50,'values': [25,50,75], 'description':'The block size to display.'}},
+                {'apikey': {'type':'STRING', 'defaultValue': '', 'description':'The flickr API key.'}}
+            ]
+}

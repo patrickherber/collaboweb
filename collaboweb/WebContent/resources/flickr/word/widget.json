@@ -1,0 +1,13 @@
+{
+    'name': 'Image Word',
+    'type': 'flickr',
+    'version': '.8',
+    'image': 'images/flickr-word.jpg',
+    'description': 'This widget is dynamic toolbar that expands as you mouse over it.',
+    'args': [
+          		{'word': {'type':'STRING', 'defaultValue': 'jmaki', 'description':'The word to display.'}},
+          		{'repeatCharacters': {'type':'BOOLEAN', 'defaultValue': 'false', 'description':'Whether or not to use unquie images for each character.'}},
+          		{'size': {'type':'NUMBER', 'defaultValue': 25,'values': [25,50,75], 'description':'The block size to display.'}},
+          		{'apikey': {'type':'STRING', 'defaultValue': '', 'description':'The flickr API key.'}}
+            ]
+}

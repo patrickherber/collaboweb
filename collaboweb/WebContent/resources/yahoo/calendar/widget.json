@@ -1,0 +1,7 @@
+ {
+    'name': 'Calendar',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/yahoo-calendar.jpg',
+    'description': 'A calendar.',
+'  }

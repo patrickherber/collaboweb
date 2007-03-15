@@ -1,0 +1,7 @@
+{
+    'name': 'Sudoku',
+    'type': 'dhtmlgoodies',
+    'version':'.8',
+    'image': 'images/dhtmlgoodies-sudoku.jpg',
+    'description': 'A sudoku game.'
+}

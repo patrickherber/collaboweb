@@ -1,0 +1,14 @@
+ {
+    'name': 'Tabbed View',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/yahoo-tabbedview.jpg',
+    'description': 'This widget is dynamic tabbed view that can easily be configured.',
+    'value': {'required':'true',
+    'type': 'OBJECT',
+    'data':{'tabs':[ 
+           {'label':'My Tab 1', content: 'Tab 1 Content'},
+           {'label':'My Tab 2', content: 'Tab 2 Content'} ]
+           }
+     }
+  }

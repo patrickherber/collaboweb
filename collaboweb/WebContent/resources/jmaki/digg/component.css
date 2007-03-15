@@ -1,0 +1,19 @@
+.digg {
+   background: #000000;
+   color: #FFFFFF;
+}
+
+.digItem {
+}
+
+.diggTitle {
+   font-size: 14px;
+}
+
+.diggLink {
+   color: #FFFFFF;
+}
+
+.diggBody {
+  font-size: 10px;
+}

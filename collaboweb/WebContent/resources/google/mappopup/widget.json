@@ -1,0 +1,10 @@
+{'name': 'Map Popup',
+         'type': 'Google',
+         'version' '.8',
+         'image' : 'images/google-mappopup.jpg',
+         'description': 'A configurable map.',
+         'args': [
+        {'height':{'type':'NUMBER', 'defaultValue': 320, 'description': 'A static height.'}},
+        {'width':{'type':'NUMBER', 'defaultValue': 500, 'description': 'A static width.'}}
+         ]
+ }

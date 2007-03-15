@@ -1,0 +1,14 @@
+{'name': 'Map',
+         'type': 'Google',
+         'version': '.8',
+         'image' : 'images/google-map.jpg',
+         'description': 'A configurable map.',
+         'args': [
+         {'zoom':{'type':'NUMBER', 'defaultValue': '13', 'description': 'The map zoom.'}},
+         {'centerLat':{'type':'NUMBER', 'defaultValue': 37.4041960114344, 'description': 'The center latititude.'}},
+         {'centerLon':{'type':'NUMBER', 'defaultValue': -122.008194923401, 'description': 'The center longitude.'}},
+         {'mapType':{'type':'STRING', 'defaultValue': 'SATALITE', 'values': [['Hybrid','HYBRID'],['Regular','REGULAR'],['Satalite','SATALITE']], 'description': 'The center longitude.'}},
+         {'height':{'type':'NUMBER', 'defaultValue': 320, 'description': 'A static height.'}},
+         {'width':{'type':'NUMBER', 'defaultValue': 500, 'description': 'A static width.'}}
+         ]
+ }

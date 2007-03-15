@@ -1,0 +1,61 @@
+.searchContainer {
+  overflow:auto;
+  border: 1px solid #000000;
+  width: 100%;
+ }
+
+.gsc-resultsRoot {
+   margin-bottom: 15px;
+   width: 740;
+   height 200px;
+}
+
+.gsc-twiddleRegionCell {
+    height:20px;
+}
+
+.gsc-stats {
+   display:none;
+}
+
+.gsc-twiddle {
+    
+}
+
+.gsc-title{
+    width: 700px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    height: 20px;
+    border-bottom: 2px solid #000000;
+}
+
+.gsc-twiddle-opened{
+   height:0px;
+}
+
+.gsc-configLabelCell {
+   display:none;
+}
+
+.gsc-twiddle-closed {
+    height:0px;
+}
+
+.gsc-resultsHeader {
+    height:20px;
+
+}
+
+.gsc-results-selector {
+    display:none;
+}
+
+.gsc-twiddle-opened {
+}
+
+
+.gsc-one-result-active {
+    display:none;
+}

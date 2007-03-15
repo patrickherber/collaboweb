@@ -1,0 +1,7 @@
+{
+    'name': 'Search',
+    'type': 'flickr',
+    'version': '.8',
+    'image': 'images/flickr-search.jpg',
+    'description': 'This that does proxy based searches on flickr. Requires the XMLHttpProxy to be set as the service.'
+}

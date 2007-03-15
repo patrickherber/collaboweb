@@ -1,0 +1,216 @@
+{"config": {
+    "version": ".8.1",
+    "glue" : {
+       "includes": ["/resources/glue.js"],
+       "listeners": [
+          {"topic" : "/dojo/fisheye",
+           "action": "call",
+           "target": {
+                    "object": "jmaki.listeners",
+                    "functionName": "handleFisheye"
+               }
+          },
+          {"topic" : "/scriptaculous/inplace/valueUpdate",
+           "action": "call",
+           "target": {
+                    "object": "jmaki.listeners",
+                    "functionName": "handleInplace"
+               }
+          },
+          {"topic" : "/yahoo/geocoder",
+           "action": "call",
+           "target": {
+                    "object": "jmaki.listeners",
+                    "functionName": "geocoderListener"
+               }
+          },
+          {"topic" : "/debug",
+           "action": "call",
+           "target": {
+                    "object": "jmaki.listeners",
+                    "functionName": "debug"
+               }
+          },
+          {"topic" : "onSave$",
+           "action": "call",
+           "target": {
+                    "object": "jmaki.listeners",
+                    "functionName": "onSave"
+               }
+          }
+        ]
+     },
+    "types": [
+
+        {"id": "jmaki",
+         "libs": ["/resources/jmaki-common.js", "/resources/injector.js"]
+        },
+        {"id": "flickr",
+         "libs": ["/resources/jmaki-common.js"]
+        },
+        {"id": "dojo",
+         "version": ".4.1",
+         "libs": ["/resources/libs/dojo/version.4.1/dojo.js", "/resources/injector.js" ],
+         "preload" : "if (typeof djConfig == 'undefined') djConfig = { parseWidgets: false, searchIds: [] };"
+        },
+        {"id": "mochikit",
+         "dynamicallyLoadable" : false,
+         "version": "1.3.1",
+         "libs": ["/resources/libs/mochikit/version1.3.1/MochiKit.js"]
+        },
+
+        {"id": "scriptaculous",
+         "version": "1.6.4",
+         "libs": [
+                  "/resources/libs/scriptaculous/version1.6.4/prototype.js",
+                  "/resources/libs/scriptaculous/version1.6.4/scriptaculous.js",
+                  "/resources/libs/scriptaculous/version1.6.4/dragdrop.js",
+                  "/resources/libs/scriptaculous/version1.6.4/effects.js"
+                 ]
+        },
+        {"id": "google",
+         "dynamicallyLoadable" : false,
+         "libs": ["http://maps.google.com/maps?file=api&amp;v=2&amp;key="],
+         "apikey" : "google"
+        },
+        {"id": "google.search",
+         "dynamicallyLoadable" : false,
+         "libs": ["http://www.google.com/uds/api?file=uds.js&amp;v=0.1&amp;key="],
+         "apikey" : "google"
+        },
+        {"id": "yahoo.vslider",
+         "version": ".12",
+         "libs": [
+                  "/resources/libs/yahoo/version.12/yahoo/yahoo-min.js",
+                  "/resources/libs/yahoo/version.12/dom/dom-min.js",
+                  "/resources/libs/yahoo/version.12/event/event-min.js",
+                  "/resources/libs/yahoo/version.12/animation/animation-min.js",
+                  "/resources/libs/yahoo/version.12/dragdrop/dragdrop-min.js",
+                  "/resources/libs/yahoo/version.12/slider/slider-min.js"
+                 ]
+        },
+        {"id": "yahoo.tabbedview",
+         "version": ".12",
+         "libs": [
+		         "/resources/injector.js",
+                 "/resources/libs/yahoo/version.12/yahoo/yahoo-min.js",
+                 "/resources/libs/yahoo/version.12/event/event-min.js",
+                 "/resources/libs/yahoo/version.12/dom/dom-min.js",
+                  "/resources/libs/yahoo/version.12/tabview/tabview-min.js"
+                 ],
+         "styles": [
+                   "/resources/libs/yahoo/version.12/tabview/assets/tabs.css",
+                   "/resources/libs/yahoo/version.12/tabview/assets/round_tabs.css"
+                   ]
+        },
+        {"id": "yahoo.tree",
+         "version": ".12",
+         "libs": [
+                 "/resources/libs/yahoo/version.12/yahoo/yahoo-min.js",
+                 "/resources/libs/yahoo/version.12/event/event-min.js",
+                  "/resources/libs/yahoo/version.12/treeview/treeview-min.js"
+                 ],
+         "styles": [
+                   "/resources/libs/yahoo/version.12/treeview/assets/tree.css"
+                   ]
+        },
+        {"id": "yahoo.calendar",
+         "version": ".12",
+         "libs": [
+                  "/resources/libs/yahoo/version.12/yahoo/yahoo-min.js",
+                  "/resources/libs/yahoo/version.12/dom/dom-min.js",
+                  "/resources/libs/yahoo/version.12/event/event-min.js",
+                  "/resources/libs/yahoo/version.12/calendar/calendar-min.js"
+                 ],
+         "styles": [
+                   "/resources/libs/yahoo/version.12/calendar/assets/calendar.css",
+                   ]
+        },
+        
+        {"id": "yahoo.carousel",
+         "version": ".3.3",
+         "libs": [
+                  "/resources/jmaki-common.js",
+                  "/resources/libs/yahoo/version.12/yahoo/yahoo-min.js",
+                  "/resources/libs/yahoo/version.12/dom/dom-min.js",
+                  "/resources/libs/yahoo/version.12/event/event-min.js",
+                  "/resources/libs/yahoo/version.12/animation/animation-min.js",
+                  "/resources/libs/yahoo/version.12/container/container_core-min.js"
+                 ]
+        },    
+        {"id": "spry",
+         "version": "1.3",
+         "libs": [
+                  "/resources/libs/spry/version1.3/SpryEffects.js",
+                  "/resources/libs/spry/version1.3/SpryAccordion.js",
+                  "/resources/injector.js"
+                 ]
+        },
+        {"id": "spry.accordionXML",
+         "version": "1.3",
+         "libs": [
+                  "/resources/libs/spry/version1.3/xpath.js",
+                  "/resources/libs/spry/version1.3/SpryData.js",
+                  "/resources/libs/spry/version1.3/SpryEffects.js",
+                  "/resources/libs/spry/version1.3/SpryAccordion.js"
+                 ]
+        },
+        {"id": "yahoo.map",
+         "dynamicallyLoadable" : false,
+         "libs": ["http://api.maps.yahoo.com/ajaxymap?v=3.0&appid="],
+         "apikey" : "yahoo"
+        }
+       ],
+        "apikeys" : [
+                {"id": "google", "keys": [
+                    {"url": "http://localhost:8080/jmaki/",
+                     "key": "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBQQAB-8rqlhkKK1uw58t3Ode1gxJxSJ46dZQcWl1eM5-s5a1kcxT-BCsg"
+                     },
+                    {"url" : "http://localhost:8080/google-test/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTJtZxus5o_x-qoFBBNX_VqSROTcRS3zNiG_GkXvl22CWxfO-TN-_ofnw"
+                     },
+                    {"url" : "http://www.javaserver.org/jmaki/",
+                     "key" : "ABQIAAAAijYE91bwmkSi9DePufn3kRSdtCpn09UVb9xrLkeFblSMUdq2zBQiN-c43FbsPzab_qAJwGANcOtGUg"
+                    },
+                    {"url" : "http://javaserver.org/jmaki/",
+                     "key" : "ABQIAAAAijYE91bwmkSi9DePufn3kRSdtCpn09UVb9xrLkeFblSMUdq2zBQiN-c43FbsPzab_qAJwGANcOtGUg"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication9/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBRnxsHGuCM8Y1VDNSbQgXi4Z6cV7RSdWCTmtLjDZwZUgNtKGQ22wNcTtg"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication8/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBR3gpzLCEKGoFsGPg7CpVAurXgcCBQFs5ZYU5PP1GvMEP6ecWOT4hpetA"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication7/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTFayEXEY-HWLJJabG8tC_MsclDfxQXB3xaUCoa5Am1PXwro-PcEGJRtg"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication6/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBScZgUhfEL48566NGrZzPmNyEGosBSW9AGV3hAbBJ-ebICrKoDO40e35g"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication5/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTCASBVZG9VCldONusfvjB8dbTsjRRP9QAwrYpehNQtBrPpNdtOwo4lqw"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication4/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBTHYoblKbb4kOc2cLIkdOLKOrmhwRTH2Md82B9WV5BDgTlwmdWSZZumt"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication3/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBQSL_wNM28G6Xr0DsakM43hpeuu8BTq3_beC5t2ZykDwW2aHBTGNxyUUA"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication2/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBQOq8FMQSOiyAXb1v-SnlEDUmJQ9RS9u73yfT9ybgNdBz3IT6loEscXPQ"
+                    },
+                    {"url" : "http://localhost:8084/WebApplication1/",
+                     "key" : "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBS_AbjPT-xPDs6zEips3Nuedhd57xTavVhjREyBaZ1wladlHg46LAqblg"
+                    },
+                    {"url": "http://localhost/jmaki/google/",
+                     "key": "ABQIAAAAyEQwWkLnhtibmBGdNd7jrBT7NKplY5ReJns7Sgn4cuuBlRTovRThik17UUykABnDfmItdPHUnID93Q"
+                    },
+                    {"url" : "http://localhost:8084/jMakidemo/",
+                     "key" : "ABQIAAAASrKACkK-2aby2w2cmN5_YhT9ockQamkUqmEqfypEZYU9-F3QMhQNy2HrCpS2mrcW8GA-CsFduOFGbg"
+		    }
+                    ]
+               },
+               {"id": "yahoo", "keys": [{"url" : "*", "key" : "jmaki-key"}]}
+             ]
+    }
+}

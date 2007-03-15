@@ -1,0 +1,12 @@
+{"name": "Dynamic Container",
+         "type": "jmaki",
+         "image" : "images/jmaki-digg.jpg",
+         "description": "This widget is that will go up and retrieve a Delicious bookmarks for a given topic directly from the client. No proxy configuration necessary.",
+         "args": [
+         	{"url":{"type":"STRING", "description": "The url containing the contents you want to include."}},
+                {"topic":{"type":"STRING", "defaultValue": "/jmaki/dcontainer", "description": "The to which this container listens to for page updates."}},
+         	{"iframe":{"type":"BOOLEAN", "defaultValue": false, "description": "Whether or not you want to use an iframe to display the content."}}
+         	]
+ }
+ 
+ 

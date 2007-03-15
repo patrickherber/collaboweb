@@ -1,0 +1,12 @@
+{
+    'name': 'Captcha',
+    'type': 'flickr',
+    'version': '.8',
+    'image': 'images/flickr-captcha.jpg',
+    'description': 'Is a catcha using flickr images.',
+    'args': [
+          		{'repeatCharacters': {'type':'BOOLEAN', 'defaultValue': 'false', 'description':'Whether or not to use unquie images for each character.'}},
+          		{'size': {'type':'NUMBER', 'defaultValue': 25,'values': [25,50,75], 'description':'The block size to display.'}},
+          		{'apikey': {'type':'STRING', 'defaultValue': '', 'description':'The flickr API key.'}}
+            ]
+}

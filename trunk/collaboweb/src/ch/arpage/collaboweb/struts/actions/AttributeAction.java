@@ -47,11 +47,18 @@ public class AttributeAction extends AbstractSecureAction {
 		
 		try {
 			if (attributeForm.isSubmitted()) {
+				boolean isNew = (attributeForm.getAttributeId() == 0);
 				resourceTypeManager.saveAttribute(attributeForm.getAttribute(),
 						user);
-				return redirect(request, response, mapping, 
-						Constants.SUCCESS_KEY, 
-						"?typeId=" + attributeForm.getTypeId()); 
+				if (isNew) {
+					return redirect(request, response, mapping, "new", 
+							"?attributeId="+ attributeForm.getAttributeId() + 
+							"&typeId=" + attributeForm.getTypeId()); 
+				} else {
+					return redirect(request, response, mapping, 
+							Constants.SUCCESS_KEY, 
+							"?typeId=" + attributeForm.getTypeId()); 
+				}
 			} else {
 				Attribute attribute = resourceTypeManager.getAttribute(
 						attributeForm.getAttributeId(), user);

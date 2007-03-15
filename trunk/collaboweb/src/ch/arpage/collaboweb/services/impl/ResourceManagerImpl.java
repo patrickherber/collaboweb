@@ -281,12 +281,18 @@ public class ResourceManagerImpl implements ResourceManager {
 	public void move(Set<Long> ids, long to, User user) {
 		securityService.checkAuthenticatedUser(user);
 		Resource toResource = get(to, user);
+		List supportedChilds = 
+			toResource.getResourceType().getSupportedChildrenIds();
 		if (toResource.isAllowed(Model.RIGHT_CONTRIBUTE)) {
-			for (long id : ids) {
-				if (id != to) {
-					Resource fromResource = get(id, user);
-					if (fromResource.isAllowed(Model.RIGHT_ADMIN)) {
-						dao.move(id, to);
+			if (supportedChilds != null) {
+				for (long id : ids) {
+					if (id != to) {
+						Resource fromResource = get(id, user);
+						if (fromResource.isAllowed(Model.RIGHT_ADMIN)) {
+							if (supportedChilds.contains(fromResource.getTypeId())) {
+								dao.move(id, to);
+							}
+						}
 					}
 				}
 			}

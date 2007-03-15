@@ -45,6 +45,7 @@ public class ResourceTypeAction extends AbstractSecureAction {
 		
 		try {
 			if (resourceTypeForm.isSubmitted()) {
+				boolean isNew = (resourceTypeForm.getTypeId() == 0);
 				resourceTypeManager.save(
 						resourceTypeForm.getResourceType(), user);
 				if (resourceTypeForm.getTypeId() != 0) {
@@ -52,7 +53,12 @@ public class ResourceTypeAction extends AbstractSecureAction {
 							resourceTypeForm.getTypeId(), 
 							resourceTypeForm.getSupportedChildrenIds(), user);
 				}
-				return mapping.findForward(Constants.SUCCESS_KEY);
+				if (isNew) {
+					return redirect(request, response, mapping, "new", 
+							"?typeId=" + resourceTypeForm.getTypeId());
+				} else {
+					return mapping.findForward(Constants.SUCCESS_KEY);
+				}
 			} else {
 				if (resourceTypeForm.getTypeId() != 0) {
 					resourceTypeForm = new ResourceTypeForm(

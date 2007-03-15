@@ -4,6 +4,7 @@
  */
 package ch.arpage.collaboweb.common;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -162,6 +163,14 @@ public abstract class Utils {
 	 */
     public static final Date parseDate(String date, Date defaultDate, boolean check) {
 		if (StringUtils.hasText(date)) {
+			if (date.trim().length() > 11) {
+				try {
+					return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date);
+				} catch (Exception e) {
+					/* ignore */
+					return defaultDate;
+				}
+			}
             String[] parts = date.split("[./-]");
             if (parts != null && parts.length > 1) {
             	if (check) {

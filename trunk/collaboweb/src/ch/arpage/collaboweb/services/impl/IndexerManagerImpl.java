@@ -194,14 +194,22 @@ public class IndexerManagerImpl implements IndexerManager, InitializingBean, Dis
             Hits hits = is.search(query, filter);
             if (hits.length() > 0) {
                 int length = hits.length();
-                List<Map<String, String>> list = 
-                	new ArrayList<Map<String, String>>(length);
+                List<Map<String, Object>> list = 
+                	new ArrayList<Map<String, Object>>(length);
 			    for (int i = 0; i < length; ++i) {
 			    	Document doc = hits.doc(i);
-			    	Map<String, String> map = new HashMap<String, String>();
+			    	Map<String, Object> map = new HashMap<String, Object>();
 			    	for (Enumeration enumer = doc.fields(); enumer.hasMoreElements(); ) {
 			    		Field field = (Field) enumer.nextElement();
-			    		map.put(field.name(), doc.get(field.name()));
+			    		String name = field.name();
+			    		if ("modified".equals(name) || "createdate".equals(name)) {
+			    			String value = doc.get(name);
+			    			if (StringUtils.hasText(value)) {
+			    				map.put(name, DateTools.stringToDate(value));
+			    			}
+			    		} else {
+			    			map.put(name, doc.get(name));
+			    		}
 			    	}
 			    	map.put("score", 
 			    			NumberFormat.getPercentInstance().format(hits.score(i)));

@@ -1,0 +1,7 @@
+ {
+    'name': 'Geocoder',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/yahoo-geocoder.jpg',
+    'description': 'This widget lets you find geocordinates using the XMLHttpProxy using the Yahoo Geocoder service.',
+  }

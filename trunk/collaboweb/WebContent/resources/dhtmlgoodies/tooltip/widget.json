@@ -1,0 +1,7 @@
+{
+    'name': 'Tooltip',
+    'type': 'dhtmlgoodies',
+    'version':'.8',
+    'image': 'images/dhtmlgoodies-tooltip.jpg',
+    'description': 'A tooltip widget. The serice is a URL for the tooltip.'
+}

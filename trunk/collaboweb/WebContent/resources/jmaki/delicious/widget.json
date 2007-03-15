@@ -1,0 +1,11 @@
+{"name": "Delicious Bookmarks",
+         "type": "jmaki",
+         "image" : "images/jmaki-digg.jpg",
+         "description": "This widget is that will go up and retrieve a Delicious bookmarks for a given topic directly from the client. No proxy configuration necessary.",
+         "args": [
+         	{"tag":{"type":"STRING", "defaultValue": "gmurray71", "description": "The tag or user id for your bookmarks"}},
+         	{"itemCount":{"type":"NUMBER", "defaultValue": 10, "description": "The number of items to fetch."}}
+         	]
+ }
+ 
+ 

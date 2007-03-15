@@ -1,0 +1,19 @@
+ {
+    'name': 'Tree',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/dojo-tree.jpg',
+    'description': 'This widget is dynamic tree that can easily be configured.',
+    'value': {'required':'true',
+    'type': 'OBJECT',
+    'data':{ 
+     	'root':{'title': 'Default Yahoo Tree Root Node',
+     			'expanded': true,
+     			'children': [
+     				{'title':'Yahoo Node 1.1', 'onclick': {'url':'foo'}},
+     				{'title':'Yahoo Node 1.2', 'children': [{'title':'Node 3.1'}]}
+     			] 
+     		}
+     	}
+     }
+  }

@@ -1,0 +1,7 @@
+ {
+    'name': 'Vertical Slider',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/dojo-vslider.jpg',
+    'description': 'A slider widget.',
+  }

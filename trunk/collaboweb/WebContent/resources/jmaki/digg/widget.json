@@ -1,0 +1,9 @@
+{'name': 'Digg Feed',
+         'type': 'jmaki',
+         'version': '.8',
+         'image' : 'images/jmaki-digg.jpg',
+         'description': 'This widget is that will go up and retrieve a digg feed for a given topic directly from the client. No proxy configuration necessary.',
+         'args': [{'diggTopic':{'type':'STRING', 'defaultValue': 'programming', 'values':  [ ['Programming','programming'],['Security','security'], ['Tech News', 'tech_news'] ]}},
+         {'itemCount':{'type':'NUMBER', 'defaultValue': 10, 'values': [5,10,20], 'description': 'The number of items to fetch.'}},
+         ]
+ }

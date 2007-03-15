@@ -1,0 +1,13 @@
+ {
+    'name': 'Carousel',
+    'type': 'yahoo',
+    'version': '.8',
+    'image': 'images/yahoo-carousel.jpg',
+    'description': 'This widget that lets you view images from flickr.',
+        'args': [     
+       
+                    {'apikey': {'type':'STRING', 'description' : 'A flickr API key'}},
+                    {'background': {'type':'STRING', 'description' : 'The background color.'}},
+                    {'tags': {'type':'STRING', 'defaultValue': 'thekt', 'description' : 'The comma separated tags you want to search for.'}}
+            	]
+}

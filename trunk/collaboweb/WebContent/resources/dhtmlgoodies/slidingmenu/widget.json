@@ -1,0 +1,7 @@
+{
+    'name': 'Sliding Menu',
+    'type': 'dhtmlgoodies',
+    'version':'.8',
+    'image': 'images/dhtmlgoodies-slidingmenu.jpg',
+    'description': 'A menu widget.'
+}

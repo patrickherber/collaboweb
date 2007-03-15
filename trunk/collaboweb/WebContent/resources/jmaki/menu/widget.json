@@ -1,0 +1,21 @@
+{'name': 'Horizontal Menu',
+         'type': 'jmaki',
+         'image' : 'images/jmaki-menu.jpg',   
+         'description':'An object containing an array of row objects. Each column object has a label property and contains an array of menu items which url that maps to an external resource or a content attribute which contains inline text.',
+         'value':{'type' : 'OBJECT',
+                'defaultValue':
+                {'columns' : [
+                 {'label': 'Some Topic',
+              	'menuItems': [
+             	  {'label':'Some Item', 'url':'1.jsp'},
+                  {'label':'Some Item 2', 'url':'2.jsp'}
+               	 ]},
+		 {'label': 'Some Other Topic',
+                  'menuItems': [
+		  {'label':'Some Other Item', 'url':'1.jsp'},
+                  {'label':'Some Other Item 2', 'url':'2.jsp'}
+               	 ]}
+            ]
+        }
+    }
+ }

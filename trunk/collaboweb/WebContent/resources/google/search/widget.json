@@ -1,0 +1,10 @@
+{'name': 'Ajax Search',
+         'type': 'Google',
+         'version' '.8',
+         'image' : 'images/google-search.jpg',
+         'description': 'Google Ajax Search.',
+         'args': [
+         {'defaultSearch':{'type':'STRING', 'defaultValue': 'jmaki', 'description': 'Default keyword to search.'}},
+         {'centerPoint':{'type':'String', 'defaultValue': 'Santa Clara, CA', 'description': 'The location where to search.'}}
+         ]
+ }

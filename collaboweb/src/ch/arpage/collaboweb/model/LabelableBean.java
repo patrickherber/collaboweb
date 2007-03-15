@@ -7,6 +7,8 @@ package ch.arpage.collaboweb.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.util.StringUtils;
+
 import ch.arpage.collaboweb.struts.common.Constants;
 
 /**
@@ -49,7 +51,7 @@ public abstract class LabelableBean extends AbstractBean {
 	public String getLabel(String language) {
 		checkLabels();
 		String label = labels.get(language);
-		if (label == null) {
+		if (!StringUtils.hasText(label)) {
 			label = labels.get(Constants.DEFAULT_LANGUAGE);
 		}
 		return label;

@@ -111,6 +111,14 @@ public class ResourceTypeDaoImpl
 	@Override
 	public void update(ResourceType bean) {
 		super.update(bean);
+		ResourceType old = resourceTypes.get(bean.getTypeId());
+		if (old != null) {
+			bean.setAttributes(old.getAttributes());
+			bean.setViews(old.getViews());
+			bean.setCategories(old.getCategories());
+			bean.setAspects(old.getAspects());
+			bean.setResourceValidations(old.getResourceValidations());
+		}	
 		resourceTypes.put(bean.getTypeId(), bean);
 	}
 	

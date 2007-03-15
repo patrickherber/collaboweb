@@ -7,6 +7,8 @@ package ch.arpage.collaboweb.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.util.StringUtils;
+
 import ch.arpage.collaboweb.struts.common.Constants;
 
 /**
@@ -107,7 +109,7 @@ public abstract class AbstractValidationType extends LabelableBean {
 	public String getMessage(String language) {
 		checkMessages();
 		String label = messages.get(language);
-		if (label == null) {
+		if (!StringUtils.hasText(label)) {
 			label = messages.get(Constants.DEFAULT_LANGUAGE);
 		}
 		return label;

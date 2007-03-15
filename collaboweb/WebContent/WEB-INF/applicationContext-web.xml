@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+
+	<bean id="abstractAction" abstract="true"
+		class="ch.arpage.collaboweb.struts.actions.AbstractAction">
+		<property name="mailService" ref="mailService"/>
+	</bean>
+
+	<bean name="/login" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.LoginAction">
+		<property name="userManager" ref="userManager"/>
+	</bean>
+	
+	<bean name="/home" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.HomeAction"/>
+	
+	<bean name="/change-language" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ChangeLanguageAction"/>
+
+	<bean name="/logout" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.LogoutAction">
+		<property name="userManager" ref="userManager"/>
+	</bean>
+
+	<bean id="abstractResourceAction" abstract="true" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.AbstractResourceAction">
+		<property name="resourceManager" ref="resourceManager"/>
+	</bean>
+	
+	<bean name="/welcome" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.WelcomeAction"/>
+	
+	<bean name="/space-view" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.SpaceViewAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/tag-view" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.TagViewAction"/>
+	
+	<bean name="/time-view" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.TimeViewAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/search" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.SearchAction">
+		<property name="indexerManager" ref="indexerManager"/>
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/people" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.PeopleViewAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceAction"/>
+	
+	<bean name="/resource-delete" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceDeleteAction"/>
+	
+	<bean name="/administration" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.SecureForwardAction"/>
+	
+	<bean name="/resource-types" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceTypesAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource-type" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceTypeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource-type-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceTypeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Attributes -->
+	
+	<bean name="/attribute" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.AttributeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/attribute-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.AttributeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/attribute-open" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.AttributeOpenAction"/>
+	
+	<!-- Tags -->
+	
+	<bean name="/tag-add" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.TagAddAction"/>
+	
+	<bean name="/tag-delete" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.TagDeleteAction"/>
+	
+	<!-- Validation Types -->
+	
+	<bean name="/validation-types" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ValidationTypesAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/validation-type" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ValidationTypeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/validation-type-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ValidationTypeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Validations -->
+	
+	<bean name="/validation" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ValidationAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/validation-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ValidationDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Resource Validation Types -->
+	
+	<bean name="/resource-validation-types" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceValidationTypesAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource-validation-type" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceValidationTypeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource-validation-type-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceValidationTypeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Validations -->
+	
+	<bean name="/resource-validation" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceValidationAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/resource-validation-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ResourceValidationDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- View Types -->
+	
+	<bean name="/view-types" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ViewTypesAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/view-type" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ViewTypeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/view-type-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ViewTypeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Views -->
+	
+	<bean name="/view" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ViewAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/view-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ViewDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Actions -->
+	
+	<bean name="/actions" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ActionsAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/action" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ActionAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/action-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ActionDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/execute-action" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.ExecuteAction">
+		<property name="actionManager" ref="actionManager"/>
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Relationship Types -->
+	
+	<bean name="/relationship-types" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.RelationshipTypesAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/relationship-type" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.RelationshipTypeAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<bean name="/relationship-type-delete" parent="abstractAction"
+		class="ch.arpage.collaboweb.struts.actions.RelationshipTypeDeleteAction">
+		<property name="resourceTypeManager" ref="resourceTypeManager"/>
+	</bean>
+	
+	<!-- Relationship -->
+	
+	<bean name="/relationship-add" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.RelationshipAddAction"/>
+	
+	<bean name="/relationship-delete" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.RelationshipDeleteAction"/>
+	
+	<!-- Move -->
+	
+	<bean name="/move" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.MoveAction"/>
+
+	<!-- Clipboard -->
+	
+	<bean name="/clipboard-add" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.ClipboardAddAction"/>
+	
+	<bean name="/clipboard-empty" parent="abstractResourceAction"
+		class="ch.arpage.collaboweb.struts.actions.ClipboardEmptyAction"/>
+
+</beans>

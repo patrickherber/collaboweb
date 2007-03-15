@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+
+	<!-- DataSource Definition -->
+	<bean id="dataSource"
+      	class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url">
+			<value>jdbc:mysql://127.0.0.1:3306/collaboweb?zeroDateTimeBehavior=convertToNull&amp;useServerPrepStmts=false</value>
+		</property>
+		<property name="username" value="root"/>
+		<property name="password" value="1234"/>
+	</bean>
+		
+	<!-- 
+	<bean id="resourceTypeDao" class="ch.arpage.collaboweb.dao.jdbc.ResourceTypeDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	 -->
+	<bean id="resourceTypeDao" class="ch.arpage.collaboweb.dao.jdbc.cache.ResourceTypeDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="resourceDao" class="ch.arpage.collaboweb.dao.jdbc.ResourceDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+		<property name="resourceTypeDao" ref="resourceTypeDao"/>
+	</bean>
+	 
+	<bean id="userDao" class="ch.arpage.collaboweb.dao.jdbc.UserDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+</beans>

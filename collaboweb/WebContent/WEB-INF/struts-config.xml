@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="actionForm" type="ch.arpage.collaboweb.struts.forms.ActionForm" />
+		<form-bean name="attributeForm" type="ch.arpage.collaboweb.struts.forms.AttributeForm" />
+		<form-bean name="loginForm" type="ch.arpage.collaboweb.struts.forms.LoginForm" />
+		<form-bean name="relationshipTypeForm" type="ch.arpage.collaboweb.struts.forms.RelationshipTypeForm" />
+		<form-bean name="resourceForm" type="ch.arpage.collaboweb.struts.forms.ResourceForm" />
+		<form-bean name="resourceTypeForm" type="ch.arpage.collaboweb.struts.forms.ResourceTypeForm" />
+		<form-bean name="resourceValidationForm" type="ch.arpage.collaboweb.struts.forms.ResourceValidationForm" />
+		<form-bean name="resourceValidationTypeForm" type="ch.arpage.collaboweb.struts.forms.ResourceValidationTypeForm" />
+		<form-bean name="searchForm" type="ch.arpage.collaboweb.struts.forms.SearchForm" />
+		<form-bean name="validationForm" type="ch.arpage.collaboweb.struts.forms.ValidationForm" />
+		<form-bean name="validationTypeForm" type="ch.arpage.collaboweb.struts.forms.ValidationTypeForm" />
+		<form-bean name="viewTypeForm" type="ch.arpage.collaboweb.struts.forms.ViewTypeForm" />
+		<form-bean name="viewForm" type="ch.arpage.collaboweb.struts.forms.ViewForm" />
+	</form-beans>
+
+	<global-forwards type="org.apache.struts.action.ActionForward">
+		<forward name="403" path="/WEB-INF/pages/login.jsp"/>
+		<forward name="404" path="/not-found.html"/>
+		<forward name="failure" path="/WEB-INF/pages/error.jsp"/>
+	</global-forwards>
+
+	<action-mappings>
+			
+		<action 
+			path="/not-found" 
+			unknown="true"
+			forward="/WEB-INF/pages/error-404.jsp"/>
+
+		<action path="/home" 
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/home.jsp" />
+		</action>
+
+		<action path="/login"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/WEB-INF/pages/login.jsp" 
+			validate="false" 
+			name="loginForm" 
+			scope="request">
+			<forward name="success" path="/welcome.html" redirect="true" />
+		</action>
+
+		<action path="/logout"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/login.html" redirect="true" />
+		</action>
+
+		<action path="/welcome"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/welcome.jsp" />
+		</action>
+		
+		<action path="/space-view"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceForm" 
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/WEB-INF/pages/space-view.jsp" />
+		</action>
+		
+		<action path="/time-view"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceForm" 
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/WEB-INF/pages/space-view.jsp" />
+		</action>
+		
+		<action path="/tag-view"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceForm" 
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/WEB-INF/pages/tag-view.jsp" />
+		</action>
+		
+		<action path="/search"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="searchForm"
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/WEB-INF/pages/search.jsp" />
+		</action>
+		
+		<action path="/people"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceForm" 
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/WEB-INF/pages/people.jsp" />
+		</action>
+		
+		<action path="/resource"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/resource.jsp">
+			<forward name="success" path="/space-view.html"/>
+		</action>
+		
+		<action path="/resource-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/space-view.html" />
+		</action>
+		
+		<action path="/administration"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			parameter="/WEB-INF/pages/administration.jsp"/>
+		
+		<action path="/resource-types"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/resource-types.jsp" />
+		</action>
+		
+		<action path="/resource-type"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceTypeForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/resource-type.jsp">
+			<forward name="new" path="/resource-type.html" />
+			<forward name="success" path="/resource-types.html"/>
+		</action>
+		
+		<action path="/resource-type-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/resource-types.html" />
+		</action>
+		
+		<!-- Attributes -->
+		
+		<action path="/attribute"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="attributeForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/attribute.jsp">
+			<forward name="new" path="/attribute.html"/>
+			<forward name="success" path="/resource-type.html"/>
+		</action>
+		
+		<action path="/attribute-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/resource-type.html" />
+		</action>
+		
+		<action path="/attribute-open"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<!-- Validation Types -->		
+		
+		<action path="/validation-types"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/validation-types.jsp" />
+		</action>
+		
+		<action path="/validation-type"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="validationTypeForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/validation-type.jsp">
+			<forward name="success" path="/validation-types.html" redirect="true"/>
+		</action>
+		
+		<action path="/validation-type-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/validation-types.html" />
+		</action>
+		
+		<!-- Resource Validation Types -->		
+		
+		<action path="/resource-validation-types"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/resource-validation-types.jsp" />
+		</action>
+		
+		<action path="/resource-validation-type"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceValidationTypeForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/resource-validation-type.jsp">
+			<forward name="success" path="/resource-validation-types.html" redirect="true"/>
+		</action>
+		
+		<action path="/resource-validation-type-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/resource-validation-types.html" />
+		</action>
+		
+		<!-- View Types -->		
+		
+		<action path="/view-types"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/view-types.jsp" />
+		</action>
+		
+		<action path="/view-type"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="viewTypeForm"
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/view-types.html"/>
+		</action>
+		
+		<action path="/view-type-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/view-types.html" />
+		</action>
+		
+		<!-- Validation -->
+		
+		<action path="/validation"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="validationForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/validation.jsp">
+			<forward name="success" path="/attribute.html"/>
+		</action>
+		
+		<action path="/validation-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/attribute.html" />
+		</action>
+		
+		<!-- Resource Validation -->
+		
+		<action path="/resource-validation"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="resourceValidationForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/resource-validation.jsp">
+			<forward name="success" path="/resource-type.html"/>
+		</action>
+		
+		<action path="/resource-validation-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/resource-type.html" />
+		</action>
+		
+		<!-- View -->
+		
+		<action path="/view"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="viewForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/view.jsp">
+			<forward name="success" path="/resource-type.html"/>
+		</action>
+		
+		<action path="/view-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/resource-type.html" />
+		</action>
+		
+		<!-- Actions -->		
+		
+		<action path="/actions"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/actions.jsp" />
+		</action>
+		
+		<action path="/action"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="actionForm"
+			validate="false" 
+			scope="request"
+			input="/WEB-INF/pages/action.jsp">
+			<forward name="success" path="/actions.html"/>
+		</action>
+		
+		<action path="/action-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/actions.html" />
+		</action>
+		
+		<!-- Relationship Types -->		
+		
+		<action path="/relationship-types"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/WEB-INF/pages/relationship-types.jsp" />
+		</action>
+		
+		<action path="/relationship-type"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			name="relationshipTypeForm"
+			validate="false" 
+			scope="request">
+			<forward name="success" path="/relationship-types.html"/>
+		</action>
+		
+		<action path="/relationship-type-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/relationship-types.html" />
+		</action>
+		
+		<!-- Tags -->
+		
+		<action path="/tag-add"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<action path="/tag-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<action path="/execute-action"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<action path="/change-language"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/home.html">
+		</action>
+		
+		<!-- Clipboard -->
+		
+		<action path="/clipboard-add"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<action path="/clipboard-empty"
+			type="org.springframework.web.struts.DelegatingActionProxy"
+			input="/space-view.html">
+		</action>
+		
+		<!-- Move -->
+		
+		<action path="/move"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/space-view.html" />
+		</action>
+		
+		<!-- Relationships -->
+		
+		<action path="/relationship-add"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/space-view.html" />
+		</action>
+		
+		<action path="/relationship-delete"
+			type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/space-view.html" />
+		</action>
+
+	</action-mappings>
+
+	<message-resources parameter="messages" />
+
+	<plug-in
+		className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation"
+			value="/WEB-INF/applicationContext-dao.xml,/WEB-INF/applicationContext-services.xml,/WEB-INF/applicationContext-web.xml" />
+	</plug-in>
+
+</struts-config>

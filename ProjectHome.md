@@ -1,0 +1,3 @@
+Dynamic web collaboration platform based on Spring. The goal of this project is to provide the ability to collaborate at object's level. Each object (file, appointment, task,...) should provide a collaboration support. On each object, the user will be able to have to create a workspace. The user will also be able to define her own object types, with their attributes, rules, actions, views.
+
+If you have questions please contact me: [patrick.herber@gmail.com]
